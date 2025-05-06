@@ -1,3 +1,4 @@
+import 'package:basic_projects/Screens/second_screen.dart';
 import 'package:flutter/material.dart';
 
 List<Map<String, String>> recentChats = [
@@ -40,16 +41,65 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            MediaQuery.sizeOf(context).width;
-            MediaQuery.sizeOf(context).height;
-          },
-          icon: Icon(Icons.abc),
-        ),
+        // leading: IconButton(
+        //   onPressed: () {
+        //     showDialog(
+        //       context: context,
+        //       builder: (context) {
+        //         return CupertinoAlertDialog(
+        //           title: Text("djncdjcn"),
+        //           actions: [
+        //             ElevatedButton(
+        //               onPressed: () {
+        //                 Navigator.of(context).pop();
+        //               },
+        //               child: Text("Close"),
+        //             ),
+        //           ],
+        //         );
+        //       },
+        //     );
+        //   },
+        //   icon: Icon(Icons.abc),
+        // ),
         backgroundColor: Colors.amber,
       ),
-      body: ListView.builder(
+      body: Center(
+        child: InkWell(
+          splashColor: Colors.black,
+          onTap: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) {
+                  return SecondScreen();
+                },
+              ),
+            );
+          },
+          child: Text("Screen 1"),
+        ),
+      ),
+    );
+  }
+}
+
+/*
+
+GridView(
+        scrollDirection: Axis.vertical,
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 1,
+        ),
+        children: List.generate(22, (i) {
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(height: 600, width: 100, color: Colors.red),
+          );
+        }),
+      ),
+
+
+ListView.builder(
         itemCount: recentChats.length,
         itemBuilder: (context, index) {
           return ListTile(
@@ -65,7 +115,5 @@ class Home extends StatelessWidget {
             trailing: IconButton(onPressed: () {}, icon: Icon(Icons.message)),
           );
         },
-      ),
-    );
-  }
-}
+      )
+ */
